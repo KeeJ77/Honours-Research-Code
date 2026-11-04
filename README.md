@@ -59,7 +59,7 @@ The notebook is split into collapsible sections:
 | 2. Ground-truth generation | ALARM samples → MI matrices → MI trees → orientation → random CPDs → synthetic datasets |
 | 3. RQ1 learning | BIC trees, SHAP trees, comparisons with the ground truth, parameter learning |
 | 4. RQ1 results | KL divergence graphs, SHD graphs, explanation using CPT degrees of freedom |
-| 5. RQ2 | exploratory methods (greedy BIC/SHAP, ReX), real-ALARM trees, single-seed and 10-seed experiments, hill climbing |
+| 5. RQ2 | real-ALARM trees, single-seed and 10-seed experiments, hill climbing |
 | Appendix | what was merged, reproducibility notes |
 
 The graphs from the original runs are saved inside the notebook, so you can see the results on GitHub without running anything.
@@ -98,7 +98,7 @@ EXP  = os.path.join(ROOT, "Experiments")     # where all outputs are written
 
 **Order for a full reproduction from scratch:** 2.1 → 2.8, then 3.1 → 3.5, then 4.1 → 4.4, then 5.2 → 5.5.
 
-⚠️ **Runtime:** the SHAP steps train 37 XGBoost models for each dataset (hundreds of datasets in total), and the RQ1 KL step draws 500,000 samples per model. A full run takes many hours. The exploratory ReX step (5.1) is the slowest of all.
+⚠️ **Runtime:** the SHAP steps train 37 XGBoost models for each dataset (hundreds of datasets in total), and the RQ1 KL step draws 500,000 samples per model. A full run takes many hours.
 
 ---
 
