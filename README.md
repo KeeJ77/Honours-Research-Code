@@ -1,6 +1,6 @@
 # Learning Bayesian Network Structure with SHAP: BIC Score Trees vs SHAP (XGBoost) Trees
 
-Honours research project (B.Sc. Hons Big Data Analytics, University of the Witwatersrand, 2026).
+Honours research project (B.Sc. Hons Computer Science, University of the Witwatersrand, 2026).
 
 The project asks whether **SHAP values from XGBoost models** can recover the structure of a discrete Bayesian network as well as the classical **BIC score**. Both methods build a maximum weight spanning tree over the variables, orient its edges, and are evaluated on how close the learned network is to the true one.
 
