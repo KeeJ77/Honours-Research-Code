@@ -139,8 +139,8 @@ These folders are large and can be regenerated, so they are best kept out of git
 
 ## Author
 
-Takudzwa Timothy Mhizha, University of the Witwatersrand
-Supervisor: *(add name)*
+Keevon Lyle Jacobs, University of the Witwatersrand
+Supervisor: Ritesh Ajoodha
 
 ## Acknowledgements
 
