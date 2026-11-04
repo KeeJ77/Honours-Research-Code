@@ -59,7 +59,7 @@ The notebook is split into collapsible sections:
 | 2. Ground-truth generation | ALARM samples → MI matrices → MI trees → orientation → random CPDs → synthetic datasets |
 | 3. RQ1 learning | BIC trees, SHAP trees, comparisons with the ground truth, parameter learning |
 | 4. RQ1 results | KL divergence graphs, SHD graphs, explanation using CPT degrees of freedom |
-| 5. RQ2 | real-ALARM trees, single-seed and 10-seed experiments, hill climbing |
+| 5. RQ2 | 10-seed experiment on the real ALARM network (BIC tree, SHAP tree, hill climbing) and the explanation using CPT degrees of freedom |
 | Appendix | what was merged, reproducibility notes |
 
 The graphs from the original runs are saved inside the notebook, so you can see the results on GitHub without running anything.
@@ -96,7 +96,7 @@ EXP  = os.path.join(ROOT, "Experiments")     # where all outputs are written
 - Every experiment step is controlled by the `RUN` dictionary, and all steps start switched **off**. Set a step to `True` to run it.
 - Steps read what earlier steps saved to disk, so you can re-run a single graph without retraining anything.
 
-**Order for a full reproduction from scratch:** 2.1 → 2.8, then 3.1 → 3.5, then 4.1 → 4.4, then 5.2 → 5.5.
+**Order for a full reproduction from scratch:** 2.1 → 2.8, then 3.1 → 3.5, then 4.1 → 4.4, then 5.1 → 5.2.
 
 ⚠️ **Runtime:** the SHAP steps train 37 XGBoost models for each dataset (hundreds of datasets in total), and the RQ1 KL step draws 500,000 samples per model. A full run takes many hours.
 
@@ -112,8 +112,8 @@ All randomness is seeded in the configuration cell:
 | Random root of each ground-truth tree | 42 |
 | Random ground-truth CPDs (Dirichlet) | 42 (reset for each ground truth) |
 | Synthetic datasets | 42 |
-| XGBoost and train/validation/test splits (RQ1, RQ2 single seed) | 100 |
-| RQ2 samples | `seed + n` (single seed: 42; repeated: 42–51) |
+| XGBoost and train/validation/test splits (RQ1) | 100 |
+| RQ2 samples | `seed + n`, seeds 42–51 |
 | RQ2 XGBoost (repeated experiment) | the experiment seed |
 | KL reference samples / Monte-Carlo KL | 42 / 1 |
 
@@ -131,7 +131,7 @@ Everything is written under `Experiments/`:
 | `9.BIC Score Structures`, `11.SHAPLY` | learned BIC and SHAP trees with comparison pictures |
 | `10.BIC CPD`, `12.SHAPLY CPD` | learned networks (`.bif`) |
 | `13.KL Divergence XGBoost VS BIC`, `14.Stuctural Hamming distance` | RQ1 results and figures |
-| `15.Real ALARM DAG recovery`, `16. New Samples` | RQ2 results and figures |
+| `16. New Samples` | RQ2 samples, results and figures |
 
 These folders are large and can be regenerated, so they are best kept out of git (see `.gitignore`).
 
